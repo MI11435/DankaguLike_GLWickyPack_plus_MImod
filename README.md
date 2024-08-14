@@ -1,10 +1,10 @@
 ダンカグライクのWickyPack+MImodにようこそ!!!
 
-Ver. 2.2.1
+Ver. 2.2.1(1)
 内容
 
 + Difficulty (難易度)
-+ DamageTint (ダメージ演出）
++ DamageTint (ダメージ演出)
 + ArrowPath (矢印レーン)
 + TapEffect (タップ・エフェクト)
 + JudgeViewer (判定表示)
@@ -19,6 +19,7 @@ MImod
 + InfiniteLife (無限ライフ)
 + MISS-madness (MISS発狂)
 + SoftLanding (ソフラン)
++ JudgeColor (判定色)
 
 [https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod](https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod)
 
