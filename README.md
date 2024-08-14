@@ -1,6 +1,6 @@
 ダンカグライクのWickyPack+MImodにようこそ!!!
 
-Ver. 2.2.1(1)
+Ver. 2.3.0
 内容
 
 + Difficulty (難易度)
@@ -8,7 +8,8 @@ Ver. 2.2.1(1)
 + ArrowPath (矢印レーン)
 + TapEffect (タップ・エフェクト)
 + JudgeViewer (判定表示)
-+ NoteEffect (ノート・エフェクト)
++ NoteEffect (ノーツ・エフェクト)
++ NoteMissVibration (ノーツミス・バイブレーション)
 + SubtitleLyric (歌詞)
 + Video (動画)
 + SongTitle (曲名)
@@ -42,6 +43,7 @@ MImod
 + TapEffect: a visible effect whether player taps the screen.
 + JudgeViewer: allows users to view note judgements (Brillant, Great, Good, Bad, Miss) directly in the gameplay rather than result screen.
 + NoteEffect: adding cool note effects whether player successfully hit notes.
++ NoteMissVibration: allow phone vibration upon missing a note.
 + SubtitleLyric: lyrics that are visible on the screen in the middle of gameplay from just a subtitle file (.srt) in song folder.
 + Video: video that are visible on the gameplay background if there are .mp4 file somewhere in the chart.
 + SongTitle: allows viewing song title at bottom left of screen.
