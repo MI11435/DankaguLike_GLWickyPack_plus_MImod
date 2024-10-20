@@ -1,6 +1,6 @@
 ダンカグライクの WickyPack+MImod にようこそ!!!
 
-Ver. 2.4.0
+Ver. 2.5.1
 内容
 
 - Difficulty (難易度)
@@ -13,6 +13,7 @@ Ver. 2.4.0
 - SubtitleLyric (歌詞)
 - Video (動画)
 - SongTitle (曲名)
+- AudioSpectrum (オーディオスペクトラム)
 
 MImod
 
@@ -22,6 +23,8 @@ MImod
 - MISS-madness (MISS 発狂)
 - SoftLanding (ソフラン)
 - JudgeColor (判定色)
+- AudioSpectrum (オーディオスペクトラム)
+- AudioReverbZone (反響音)
 
 [https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod](https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod)
 
@@ -35,19 +38,6 @@ MImod
 
 事の発端は WickyPack に無限ライフ.lua を入れたことです。
 そこから、変な方向に行っています。軌道修正はもう出来ないね()
-
-## Featuring
-
-- Difficulty: allows viewing difficulty note at bottom right of screen
-- DamageTint: allows visible damage tint to players when they miss notes.
-- ArrowPath: a cool moving arrow path on the lane for the flow.
-- TapEffect: a visible effect whether player taps the screen.
-- JudgeViewer: allows users to view note judgements (Brillant, Great, Good, Bad, Miss) directly in the gameplay rather than result screen.
-- NoteEffect: adding cool note effects whether player successfully hit notes.
-- NoteMissVibration: allow phone vibration upon missing a note.
-- SubtitleLyric: lyrics that are visible on the screen in the middle of gameplay from just a subtitle file (.srt) in song folder.
-- Video: video that are visible on the gameplay background if there are .mp4 file somewhere in the chart.
-- SongTitle: allows viewing song title at bottom left of screen.
 
 ## 導入方法
 
