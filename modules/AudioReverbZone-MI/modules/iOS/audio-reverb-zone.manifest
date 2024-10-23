@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 3039498549
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cc945fe73dc3b18543741519dc20edb1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 194af2b0b16dc61a1cd8d5a844d53f09
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 167
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/Audio Reverb Zone.prefab
+Dependencies: []
