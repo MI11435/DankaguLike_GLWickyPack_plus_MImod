@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2980268417
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: audio-reverb-zone
+      Dependencies: {}
