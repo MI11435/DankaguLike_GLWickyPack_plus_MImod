@@ -25,6 +25,7 @@ MImod
 - JudgeColor (判定色)
 - AudioSpectrum (オーディオスペクトラム)
 - AudioReverbZone (反響音)
+- RisingScore(スコア詰め)
 
 [https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod](https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod)
 
