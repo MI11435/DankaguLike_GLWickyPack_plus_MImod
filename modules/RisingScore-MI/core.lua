@@ -46,7 +46,7 @@ execute.update = function()
     local score = PLAYERSTATS:GetScore()
     if High_Score <= theoretical_value then --ハイスコアが理論値より大きかったらこのluaは実行しない。
         local hantei, dec = math.modf((theoretical_value - High_Score) -
-            (((Note_id + 1) / ALL_Noteindex) * theoretical_value - score))
+            (math.floor(((Note_id + 1) / ALL_Noteindex) * theoretical_value) - score))
         if hantei < 0 then
             local platform = APPMAN:GetPlatformInt()
             if platform == 3 or platform == 4 then
