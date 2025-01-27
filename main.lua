@@ -63,9 +63,9 @@ function onloaded()
 	local platform = APPMAN:GetPlatformInt()
 
 	if platform == 3 or platform == 4 then
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/GLWPpMI_2.5.1.3/"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/GLWPpMI_3.0.0/"
 	else
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\GLWPpMI_2.5.1.3\\"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\GLWPpMI_3.0.0\\"
 	end
 
 	util = require("tools\\utils.lua")
@@ -77,6 +77,9 @@ function onloaded()
 	loadAllScripts()
 
 	for i = 1, #scripts do
+		scripts[i].GetModulePath = function()
+			return modules[i]
+		end
 		scripts[i].LoadTexture = function(asset)
 			return UTIL:LoadTexture(modules[i] .. "\\" .. asset)
 		end

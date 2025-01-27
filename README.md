@@ -1,6 +1,6 @@
 ダンカグライクの WickyPack+MImod にようこそ!!!
 
-Ver. 2.5.1
+Ver. 3.0.0
 内容
 
 - Difficulty (難易度)
@@ -14,6 +14,10 @@ Ver. 2.5.1
 - Video (動画)
 - SongTitle (曲名)
 - AudioSpectrum (オーディオスペクトラム)
+- AllBrilliantCombo (AB表示)
+- Tilt (レーン傾き)
+- LifeBarColor (ライフバー カラー)
+- BossAttack (ボスアタック)
 
 MImod
 
