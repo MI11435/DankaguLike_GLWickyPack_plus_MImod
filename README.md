@@ -1,6 +1,6 @@
 ダンカグライクの WickyPack+MImod にようこそ!!!
 
-Ver. 3.0.0
+Ver. 3.1.0
 内容
 
 - Difficulty (難易度)
