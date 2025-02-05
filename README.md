@@ -9,14 +9,14 @@ Ver. 3.0.0
 - TapEffect (タップ・エフェクト)
 - JudgeViewer (判定表示)
 - NoteEffect (ノーツ・エフェクト)
-- NoteMissVibration (ノーツミス・バイブレーション)
+- NoteMissVibration (ミス・バイブレーション)
 - SubtitleLyric (歌詞)
 - Video (動画)
 - SongTitle (曲名)
 - AudioSpectrum (オーディオスペクトラム)
-- AllBrilliantCombo (AB表示)
+- AllBrilliantCombo (AB 表示)
 - Tilt (レーン傾き)
-- LifeBarColor (ライフバー カラー)
+- LifeBarColor (ライフバー色)
 - BossAttack (ボスアタック)
 
 MImod
