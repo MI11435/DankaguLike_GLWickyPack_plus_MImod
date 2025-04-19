@@ -63,9 +63,9 @@ function onloaded()
 	local platform = APPMAN:GetPlatformInt()
 
 	if platform == 3 or platform == 4 then
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/GLWPpMI_3.1.1/"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/GLWPpMI_3.2.0/"
 	else
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\GLWPpMI_3.1.1\\"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\GLWPpMI_3.2.0\\"
 	end
 
 	util = require("tools\\utils.lua")

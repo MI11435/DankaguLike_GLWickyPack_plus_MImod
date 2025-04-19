@@ -50,22 +50,22 @@ execute.onloaded = function()
 		diffColor = util.ColorRGB(222, 0, 255)
 	end
 	diffText = SONGMAN:GetTitle()
-	diffText = string.gsub(diffText, "Ⓤ", [[<sprite name="ura">]])
-	diffText = string.gsub(diffText, "%(Ura%)", [[<sprite name="ura">]])
-	diffText = string.gsub(diffText, "Ⓓ", [[<sprite name="danmaku">]])
-	diffText = string.gsub(diffText, "%(Danmaku%)", [[<sprite name="danmaku">]])
-	diffText = string.gsub(diffText, "Ⓡ", [[<sprite name="rescore">]])
-	diffText = string.gsub(diffText, "®", [[<sprite name="rescore">]])
-	diffText = string.gsub(diffText, "%(Rescore%)", [[<sprite name="rescore">]])
-	diffText = string.gsub(diffText, "Ⓕ", [[<sprite name="full">]])
+	diffText_table1 = { "Ⓤ", "%(Ura%)", "Ⓓ", "%(Danmaku%)", "Ⓡ", "®", "%(Rescore%)", "Ⓕ" }
+	diffText_table2 = { [[<sprite name="ura">]], [[<sprite name="ura">]], [[<sprite name="danmaku">]],
+		[[<sprite name="danmaku">]], [[<sprite name="rescore">]], [[<sprite name="rescore">]],
+		[[<sprite name="rescore">]], [[<sprite name="full">]] }
+
+	for index, value in ipairs(diffText_table1) do
+		diffText = string.gsub(diffText, value, diffText_table2[index])
+	end
 	local Shadow_diffText = diffText
 	Shadow_diffText = string.gsub(Shadow_diffText, [[<sprite name="ura">]], [[<sprite name="ura" tint=1>]])
 	Shadow_diffText = string.gsub(Shadow_diffText, [[<sprite name="danmaku">]], [[<sprite name="danmaku" tint=1>]])
 	Shadow_diffText = string.gsub(Shadow_diffText, [[<sprite name="rescore">]], [[<sprite name="rescore" tint=1>]])
 	Shadow_diffText = string.gsub(Shadow_diffText, [[<sprite name="full"]], [[<sprite name="full" tint=1>]])
 
-	diffText = diffText .. SONGMAN:GetSubtitle()
-	Shadow_diffText = Shadow_diffText .. SONGMAN:GetSubtitle()
+	diffText = diffText .. " " .. SONGMAN:GetSubtitle()
+	Shadow_diffText = Shadow_diffText .. " " .. SONGMAN:GetSubtitle()
 
 	CreateCanvas(WickyCanvas, "SongTitleShadow", Vector3(33, 28, 0), diffColor,
 		Shadow_diffText, execute.GetOption("size"))

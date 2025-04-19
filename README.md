@@ -1,6 +1,6 @@
 ダンカグライクの WickyPack+MImod にようこそ!!!
 
-Ver. 3.1.1
+Ver. 3.2.0
 内容
 
 - Difficulty (難易度)
@@ -9,6 +9,7 @@ Ver. 3.1.1
 - TapEffect (タップ・エフェクト)
 - JudgeViewer (判定表示)
 - NoteEffect (ノーツ・エフェクト)
+- Note Count (ノート数)
 - NoteMissVibration (ミス・バイブレーション)
 - SubtitleLyric (歌詞)
 - Video (動画)
@@ -30,6 +31,7 @@ MImod
 - AudioSpectrum (オーディオスペクトラム)
 - AudioReverbZone (反響音)
 - RisingScore(スコア詰め)
+- RemainingCount(残り数)
 
 [https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod](https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod)
 

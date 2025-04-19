@@ -8,6 +8,7 @@
   "JudgeViewer": "Judge Viewer",
   "LifeBarColor": "Lifebar Color",
   "NoteEffect": "Note Effect",
+  "NoteCount": "Note Count",
   "NoteMissVibration": "Note Miss Vibration",
   "Settings": "Settings",
   "SongTitle": "Song Title",
@@ -24,5 +25,6 @@
   "JudgeColor-MI":"|Judge Color|",
   "AudioSpectrum-MI":"|Audio Spectrum|",
   "AudioReverbZone-MI":"|Audio Reverb Zone|",
-  "RisingScore-MI":"|Rising Score|"
+  "RisingScore-MI":"|Rising Score|",
+  "RemainingCount-MI":"|Remaining Count|"
 }

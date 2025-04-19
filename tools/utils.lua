@@ -13,6 +13,7 @@ local Material = UnityEngine.Material
 local Input = UnityEngine.Input
 local Resources = UnityEngine.Resources
 local Font = UnityEngine.Font
+local Font_TMP = CS.TMPro.TMP_FontAsset
 local Path = CS.System.IO.Path
 local File = CS.System.IO.File
 local WickyCanvas = nil
@@ -105,6 +106,20 @@ util.GetFontJP = function()
 	--Load font Japanese
 	for i = 0, textObj.Length - 1 do
 		if textObj[i].name == "NotoSansJP-Bold" then
+			FontJP = textObj[i]
+			break
+		end
+	end
+
+	return FontJP
+end
+
+util.GetFontJP_TMP = function()
+	local textObj = Resources.FindObjectsOfTypeAll(typeof(Font_TMP))
+
+	--Load font Japanese
+	for i = 0, textObj.Length - 1 do
+		if textObj[i].name == "NikkyouSans-mLKax SDF" then
 			FontJP = textObj[i]
 			break
 		end

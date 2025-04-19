@@ -7,6 +7,7 @@
   "Difficulty": "難易度",
   "JudgeViewer": "判定表示",
   "LifeBarColor": "ライフバー色",
+  "NoteCount": "ノート数",
   "NoteEffect": "ノーツ・エフェクト",
   "NoteMissVibration": "ミス・バイブレーション",
   "Settings": "設定変更",
@@ -24,5 +25,6 @@
   "JudgeColor-MI":"|判定色|",
   "AudioSpectrum-MI":"|オーディオスペクトラム|",
   "AudioReverbZone-MI":"|反響音|",
-  "RisingScore-MI":"|スコア詰め|"
+  "RisingScore-MI":"|スコア詰め|",
+  "RemainingCount-MI":"|残り数|"
 }

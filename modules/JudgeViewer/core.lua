@@ -80,8 +80,8 @@ execute.onloaded = function()
 
 	local JudgementCanvas = GameObject("JudgementCanvas")
 	JudgementCanvas.gameObject.transform:SetParent(WickyCanvas.transform, false)
-	JudgementCanvasComp = JudgementCanvas:AddComponent(typeof(UnityEngine.Canvas))
-	JudgementCanvasComp.renderMode = UnityEngine.RenderMode.ScreenSpaceCamera
+	RemainingCountCanvasComp = JudgementCanvas:AddComponent(typeof(UnityEngine.Canvas))
+	RemainingCountCanvasComp.renderMode = UnityEngine.RenderMode.ScreenSpaceCamera
 	JudgementCanvas.transform.anchorMin = Vector2(0, 1)
 	JudgementCanvas.transform.anchorMax = Vector2(0, 1)
 	JudgementCanvas.transform.pivot = Vector2(0, 1)
