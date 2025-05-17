@@ -66,6 +66,35 @@ function execute.onSpawnNote(noteController)
     end
 end
 
+local function retry()
+    local platform = APPMAN:GetPlatformInt()
+    if execute.GetOption("SCENE") == 2 then
+        if platform == 3 or platform == 4 then
+            CS.UnityEngine.SceneManagement.SceneManager.LoadScene(2)
+        else
+            CS.UnityEngine.SceneManagement.SceneManager.LoadScene("Game")
+        end
+    elseif execute.GetOption("SCENE") == 1 then
+        if platform == 3 or platform == 4 then
+            CS.UnityEngine.SceneManagement.SceneManager.LoadScene(1)
+        else
+            CS.UnityEngine.SceneManagement.SceneManager.LoadScene("SelectMusic")
+        end
+    end
+end
+
+local function High_Score_Judge()
+    local score = PLAYERSTATS:GetScore()
+    if High_Score <= theoretical_value then --ハイスコアが理論値より大きかったらこのluaは実行しない。
+        local hantei = (theoretical_value - High_Score) -
+            (math.floor(((StartNote_id + Note_id + 1) / ALL_Noteindex) * theoretical_value) - score)
+        LifeView2.transform:GetChild(1):GetComponent(typeof(UnityEngine.UI.Slider)).value = hantei
+        if hantei < 0 then
+            retry()
+        end
+    end
+end
+
 execute.onHitNote = function(id, lane, noteType, judgeType, isAttack)
     Note_id = Note_id + 1
     High_Score_Judge()
@@ -74,23 +103,6 @@ end
 execute.onMissedNote = function(id, lane, noteType)
     Note_id = Note_id + 1
     High_Score_Judge()
-end
-
-function High_Score_Judge()
-    local score = PLAYERSTATS:GetScore()
-    if High_Score <= theoretical_value then --ハイスコアが理論値より大きかったらこのluaは実行しない。
-        local hantei = (theoretical_value - High_Score) -
-            (math.floor(((StartNote_id + Note_id + 1) / ALL_Noteindex) * theoretical_value) - score)
-        LifeView2.transform:GetChild(1):GetComponent(typeof(UnityEngine.UI.Slider)).value = hantei
-        if hantei < 0 then
-            local platform = APPMAN:GetPlatformInt()
-            if platform == 3 or platform == 4 then
-                CS.UnityEngine.SceneManagement.SceneManager.LoadScene(2)
-            else
-                CS.UnityEngine.SceneManagement.SceneManager.LoadScene("Game")
-            end
-        end
-    end
 end
 
 return execute
