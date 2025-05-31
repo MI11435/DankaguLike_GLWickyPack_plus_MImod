@@ -80,6 +80,8 @@ local function retry()
         else
             CS.UnityEngine.SceneManagement.SceneManager.LoadScene("SelectMusic")
         end
+    elseif execute.GetOption("SCENE") == 4 then
+        PLAYERSTATS:SetLife(0)
     end
 end
 
