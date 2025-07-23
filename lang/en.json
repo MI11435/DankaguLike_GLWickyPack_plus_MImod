@@ -26,5 +26,6 @@
   "AudioSpectrum-MI":"|Audio Spectrum|",
   "AudioReverbZone-MI":"|Audio Reverb Zone|",
   "RisingScore-MI":"|Rising Score|",
-  "RemainingCount-MI":"|Remaining Count|"
+  "RemainingCount-MI":"|Remaining Count|",
+  "toSpeed-MI":"|to Speed|"
 }

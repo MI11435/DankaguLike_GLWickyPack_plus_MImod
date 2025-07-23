@@ -26,5 +26,6 @@
   "AudioSpectrum-MI":"|オーディオスペクトラム|",
   "AudioReverbZone-MI":"|反響音|",
   "RisingScore-MI":"|スコア詰め|",
-  "RemainingCount-MI":"|残り数|"
+  "RemainingCount-MI":"|残り数|",
+  "toSpeed-MI":"|スピード換算|"
 }

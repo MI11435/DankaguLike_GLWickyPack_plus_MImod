@@ -32,6 +32,7 @@ MImod
 - AudioReverbZone (反響音)
 - RisingScore(スコア詰め)
 - RemainingCount(残り数)
+- toSpeed(スピード換算)
 
 [https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod](https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod)
 
