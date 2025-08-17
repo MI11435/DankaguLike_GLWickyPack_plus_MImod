@@ -1,6 +1,6 @@
 ダンカグライクの WickyPack+MImod にようこそ!!!
 
-Ver. 3.2.0
+Ver. 3.3.0
 内容
 
 - Difficulty (難易度)
@@ -19,6 +19,7 @@ Ver. 3.2.0
 - Tilt (レーン傾き)
 - LifeBarColor (ライフバー色)
 - BossAttack (ボスアタック)
+- LaneEffect (レーンエフェクト)
 
 MImod
 

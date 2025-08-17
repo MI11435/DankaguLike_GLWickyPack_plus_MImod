@@ -17,6 +17,7 @@ local Font_TMP = CS.TMPro.TMP_FontAsset
 local Path = CS.System.IO.Path
 local File = CS.System.IO.File
 local WickyCanvas = nil
+local LaneSpriteCanvas = nil
 local width = SCREENMAN:GetScreenWidth()
 local height = SCREENMAN:GetScreenHeight()
 local FontJP = nil
@@ -92,6 +93,13 @@ util.CreateCanvas = function(name, distance)
 	WickyCanvasTEComp.enabled = true
 
 	return WickyCanvasTE
+end
+
+util.GetLaneSpriteCanvas = function()
+	if LaneSpriteCanvas == nil then
+		LaneSpriteCanvas = UnityEngine.GameObject("LaneSprite_Canvas")
+	end
+	return LaneSpriteCanvas
 end
 
 util.GetFontJP = function()
