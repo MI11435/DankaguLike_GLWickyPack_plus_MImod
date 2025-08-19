@@ -10,6 +10,7 @@ execute.onloaded = function()
     local _Sprite = UTIL:CreateSprite(execute.LoadTexture("grd.png"))
     local JudgementColor = GameObject("JudgementColor_MImod")
     JudgementColor.gameObject.transform:SetParent(util.GetLaneSpriteCanvas().transform, false)
+    JudgementColor.transform.localPosition = CS.UnityEngine.Vector3(0, 2 ^ -10, 0)
     for i = 1, 7, 1 do
         laneSprite[i] = GameObject.Instantiate(LaneSpritePrefab)
         laneSprite[i].gameObject.transform:SetParent(JudgementColor.transform, false)
