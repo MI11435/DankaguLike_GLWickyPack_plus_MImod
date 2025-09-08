@@ -5,6 +5,7 @@ local _Audio_Reverb_Zone_obj
 
 local GameObject = CS.UnityEngine.GameObject
 
+
 execute.onloaded = function()
     local assetBundleHash = execute.LoadAssetBundle("modules/" .. util.GetPlatformPath() .. "/audio-reverb-zone")
     local _Audio_Reverb_Zone = ASSETMAN:LoadGameObject(assetBundleHash, "Audio Reverb Zone")
@@ -18,3 +19,4 @@ function DelayReverb()
 end
 
 return execute
+--アプリ版での対応を模索

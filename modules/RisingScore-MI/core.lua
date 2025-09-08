@@ -1,5 +1,6 @@
 local execute = {}
 execute.active = true
+local ClearState = nil
 local High_Score = 0
 local StartNote_id = 0
 local Note_id = -1
@@ -9,6 +10,7 @@ local ALL_Noteindex = 0
 local UnityEngine = CS.UnityEngine
 local GameObject = UnityEngine.GameObject
 local Vector2 = UnityEngine.Vector2
+local Path = CS.System.IO.Path
 
 local LifeView2
 
@@ -34,10 +36,9 @@ execute.start = function()
     if (APPMAN:IsNotePreview()) then
         return
     end
-
     local scoreData = CS.ScoreDataPrefas.instance:FindScore(
-        CS.GameManager.Instance.SelectSongInfo.FolderName,
-        CS.GameManager.Instance.SelectDifficulty
+        Path.GetFileName(SONGMAN:GetSongDir()),
+        SONGMAN:GetDifficulty()
     )
 
     if (scoreData == nil) then
@@ -52,6 +53,7 @@ execute.start = function()
         "Rank : " .. scoreData.Rank
     )
     ]]
+    ClearState = scoreData.ClearState
     High_Score = scoreData.Score
     LifeView2.transform:GetChild(1):GetComponent(typeof(UnityEngine.UI.Slider)).maxValue = theoretical_value - High_Score
     LifeView2.transform:GetChild(1):GetComponent(typeof(UnityEngine.UI.Slider)).normalizedValue = 1
@@ -87,7 +89,7 @@ end
 
 local function High_Score_Judge()
     local score = PLAYERSTATS:GetScore()
-    if High_Score <= theoretical_value then --ハイスコアが理論値より大きかったらこのluaは実行しない。
+    if High_Score < theoretical_value then --ハイスコアが理論値より大きかったらこのluaは実行しない。
         local hantei = (theoretical_value - High_Score) -
             (math.floor(((StartNote_id + Note_id + 1) / ALL_Noteindex) * theoretical_value) - score)
         LifeView2.transform:GetChild(1):GetComponent(typeof(UnityEngine.UI.Slider)).value = hantei
@@ -98,11 +100,17 @@ local function High_Score_Judge()
 end
 
 execute.onHitNote = function(id, lane, noteType, judgeType, isAttack)
+    if ClearState == 3 and 0 < judgeType then
+        return retry()
+    end
     Note_id = Note_id + 1
     High_Score_Judge()
 end
 
 execute.onMissedNote = function(id, lane, noteType)
+    if ClearState == 3 then
+        return retry()
+    end
     Note_id = Note_id + 1
     High_Score_Judge()
 end

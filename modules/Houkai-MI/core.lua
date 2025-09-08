@@ -115,7 +115,8 @@ execute.onPause = function()
 end
 
 execute.update = function()
-	MI_Scoretext:GetComponent("TMPro.TextMeshProUGUI").text = PLAYERSTATS:GetScore() * math.pi + 40000000
+	--やる意味がなくなったので消し
+	--MI_Scoretext:GetComponent("TMPro.TextMeshProUGUI").text = PLAYERSTATS:GetScore() * math.pi + 40000000
 	local songBeat = GAMESTATE:GetSongBeat()
 	UTIL:TweenRotateQuaternion(MI_UnderLane.transform,
 		MI_cameraManTr.transform.rotation * Quaternion.Euler(0, 0, songBeat * 700), 0)
@@ -175,12 +176,12 @@ execute.update = function()
 		postEffect:SetEnable(true)
 	end
 end
-
-execute.ondestroy = function()
+--アプリで呼べなくなったので消し
+--[[execute.ondestroy = function()
 	_Houkai = 0
 	MI_GameManager = GameObject.Find("SingletonPrefabs/GameManager")
 	MI_SetGameManager = MI_GameManager:GetComponent("GameManager")
 	MI_SetGameManager.ResultData.Score = math.floor(PLAYERSTATS:GetScore() * math.pi) + 40000000
 end
-
+]]
 return execute
