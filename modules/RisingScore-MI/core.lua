@@ -101,7 +101,7 @@ end
 
 execute.onHitNote = function(id, lane, noteType, judgeType, isAttack)
     if ClearState == 3 and 0 < judgeType then
-        return retry()
+        retry()
     end
     Note_id = Note_id + 1
     High_Score_Judge()
@@ -109,7 +109,7 @@ end
 
 execute.onMissedNote = function(id, lane, noteType)
     if ClearState == 3 then
-        return retry()
+        retry()
     end
     Note_id = Note_id + 1
     High_Score_Judge()
