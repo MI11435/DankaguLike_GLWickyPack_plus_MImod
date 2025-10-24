@@ -10,7 +10,7 @@ local ALL_Noteindex = 0
 local RemainingCountText
 local judgeNote = 0
 
-local function CreateRemainingCountCanvas(parentCanvas, name, pos, FontJP)
+local function CreateRemainingCountCanvas(parentCanvas, name, pos)
 	local JudgeImg = GameObject(name)
 	JudgeImg.gameObject.transform:SetParent(parentCanvas.transform, false)
 	JudgeImg:AddComponent(typeof(UnityEngine.CanvasRenderer))
@@ -21,28 +21,28 @@ local function CreateRemainingCountCanvas(parentCanvas, name, pos, FontJP)
 	JudgeImgComp.transform.sizeDelta = Vector2(230, 60)
 	JudgeImgComp.transform.anchoredPosition = pos
 
-	local TextCanvas = GameObject(name .. "_b")
+	local TextCanvas = ACTORFACTORY:CreateUIText()
+	TextCanvas.name = (name .. "_b")
 	TextCanvas.gameObject.transform:SetParent(JudgeImg.transform, false)
-	TextCanvas:AddComponent(typeof(UnityEngine.CanvasRenderer))
-	_TextCanvasText = TextCanvas:AddComponent(typeof(UnityEngine.UI.Text))
+	TextCanvas.gameObject:AddComponent(typeof(UnityEngine.CanvasRenderer))
+	local _TextCanvasText = TextCanvas:GetTextMeshProUGUI()
 	TextCanvas.transform.anchoredPosition = Vector2(0, 0)
-	_TextCanvasText.font = FontJP
 	_TextCanvasText.fontSize = 26
+	_TextCanvasText.outlineWidth = 0.2
 	_TextCanvasText.color = Color(1, 1, 1, 1)
 	_TextCanvasText.text = util.GetString("RemainingCount-MI")
-	_TextCanvasText.horizontalOverflow = CS.UnityEngine.HorizontalWrapMode.Overflow
-	_TextCanvasText.alignment = CS.UnityEngine.TextAnchor.MiddleCenter
 
-	local TextCanvas1 = GameObject(name .. "Text")
+	local TextCanvas1 = ACTORFACTORY:CreateUIText()
+	TextCanvas.name = (name .. "Text")
 	TextCanvas1.gameObject.transform:SetParent(JudgeImg.transform, false)
-	TextCanvas1:AddComponent(typeof(UnityEngine.CanvasRenderer))
-	_TextCanvasText1 = TextCanvas1:AddComponent(typeof(UnityEngine.UI.Text))
-	TextCanvas1.transform.anchoredPosition = Vector2(170, -22)
-	_TextCanvasText1.font = FontJP
+	TextCanvas1.gameObject:AddComponent(typeof(UnityEngine.CanvasRenderer))
+	_TextCanvasText1 = TextCanvas1:GetTextMeshProUGUI()
+	TextCanvas1.transform.sizeDelta = Vector2(200, 100)
+	TextCanvas1.transform.anchoredPosition = Vector2(220, -22)
 	_TextCanvasText1.fontSize = 37
+	_TextCanvasText1.outlineWidth = 0.2
 	_TextCanvasText1.color = Color(1, 1, 1, 1)
-	_TextCanvasText1.horizontalOverflow = CS.UnityEngine.HorizontalWrapMode.Overflow
-
+	_TextCanvasText1.alignment = CS.TMPro.TextAlignmentOptions.TopLeft
 	return _TextCanvasText1
 end
 
@@ -57,9 +57,7 @@ function execute.onloaded()
 	RemainingCountCanvas.transform.anchorMin = Vector2(0, 1)
 	RemainingCountCanvas.transform.anchorMax = Vector2(0, 1)
 	RemainingCountCanvas.transform.pivot = Vector2(0, 1)
-	local FontJP = util.GetFontJP()
-	RemainingCountText = CreateRemainingCountCanvas(RemainingCountCanvas, "RemainingCount", Vector2(150, -280 - (7 * 60)),
-		FontJP)
+	RemainingCountText = CreateRemainingCountCanvas(RemainingCountCanvas, "RemainingCount", Vector2(150, -280 - (7 * 60)))
 	RemainingCountText.text = ALL_Noteindex
 end
 

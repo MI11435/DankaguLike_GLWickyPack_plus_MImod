@@ -12,8 +12,6 @@ local Resources = UnityEngine.Resources
 local execute = {}
 execute.active = true
 
-local FontJP = nil
-
 local Judges = {
 	{
 		name = "Brillant",
@@ -58,24 +56,23 @@ local function CreateJudgeCanvas(parentCanvas, name, pos, sprite)
 	JudgeImgComp.transform.sizeDelta = Vector2(230, 60)
 	JudgeImgComp.transform.anchoredPosition = pos
 
-	local TextCanvas = GameObject(name .. "Text")
+	local TextCanvas = ACTORFACTORY:CreateUIText()
+	TextCanvas.name = name .. "Text"
 	TextCanvas.gameObject.transform:SetParent(JudgeImg.transform, false)
-	TextCanvas:AddComponent(typeof(UnityEngine.CanvasRenderer))
-	_TextCanvasText = TextCanvas:AddComponent(typeof(UnityEngine.UI.Text))
-	TextCanvas.transform.anchoredPosition = Vector2(170, -22)
-	_TextCanvasText.font = FontJP
+	TextCanvas.gameObject:AddComponent(typeof(UnityEngine.CanvasRenderer))
+	local _TextCanvasText = TextCanvas:GetTextMeshProUGUI()
+	TextCanvas.transform.sizeDelta = Vector2(200, 100)
+	TextCanvas.transform.anchoredPosition = Vector2(220, -22)
+	_TextCanvasText.outlineWidth = 0.2
 	_TextCanvasText.fontSize = 37
 	_TextCanvasText.text = "0"
 	_TextCanvasText.color = Color(1, 1, 1, 1)
-	_TextCanvasText.horizontalOverflow = CS.UnityEngine.HorizontalWrapMode.Overflow
-
+	_TextCanvasText.alignment = CS.TMPro.TextAlignmentOptions.TopLeft
 	return _TextCanvasText
 end
 
 execute.onloaded = function()
 	local WickyCanvas = util.GetCanvas()
-	local obj = CS.UnityEngine.Resources.FindObjectsOfTypeAll(typeof(UnityEngine.Material))
-	local textObj = CS.UnityEngine.Resources.FindObjectsOfTypeAll(typeof(UnityEngine.Font))
 	local spriteObj = CS.UnityEngine.Resources.FindObjectsOfTypeAll(typeof(UnityEngine.Sprite))
 
 	local JudgementCanvas = GameObject("JudgementCanvas")
@@ -85,19 +82,6 @@ execute.onloaded = function()
 	JudgementCanvas.transform.anchorMin = Vector2(0, 1)
 	JudgementCanvas.transform.anchorMax = Vector2(0, 1)
 	JudgementCanvas.transform.pivot = Vector2(0, 1)
-
-	--Load material
-	for i = 0, obj.Length - 1 do
-		if obj[i].name == "Font Material" then FontMat = obj[i] end
-	end
-
-	--Load font Japanese
-	for i = 0, textObj.Length - 1 do
-		if textObj[i].name == "NotoSansJP-Bold" then
-			FontJP = textObj[i]
-			break
-		end
-	end
 
 	for i = 0, spriteObj.Length - 1 do
 		for j, v in pairs(Judges) do

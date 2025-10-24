@@ -1,5 +1,6 @@
+local cs_coroutine = require "cs_coroutine"
+local _coroutine
 local UnityEngine = CS.UnityEngine
-local GameObject = UnityEngine.GameObject
 local Vector2 = UnityEngine.Vector2
 local Vector3 = UnityEngine.Vector3
 
@@ -9,46 +10,11 @@ local nowbaseBPM_Division_BPM = 1.0
 local nowBPM
 local nowScroll = 1.0
 
-local lastBeet = math.huge * -1
+local lastBeet = -math.huge
+local F_on = true
 
 local execute = {}
 execute.active = true
-
-function execute.onloaded()
-	nowBPM = SONGMAN:GetBaseBpm()
-	local WickyCanvas = util.GetCanvas()
-	local Speed_Num_txt = ACTORFACTORY:CreateUIText()
-	Speed_Num_txt_UGUI = Speed_Num_txt:GetTextMeshProUGUI()
-	Speed_Num_txt.gameObject.name = "Speed_Num_txt"
-	Speed_Num_txt.gameObject.transform:SetParent(WickyCanvas.transform, false)
-	Speed_Num_txt.gameObject:AddComponent(typeof(UnityEngine.CanvasRenderer))
-	Speed_Num_txt.transform.anchorMin = Vector2(0, 0.6)
-	Speed_Num_txt.transform.anchorMax = Vector2(1, 0.6)
-	Speed_Num_txt.transform.localPosition = Vector3(-35, 30, 0)
-	Speed_Num_txt.transform.sizeDelta = Vector2(0, 0)
-	Speed_Num_txt_UGUI.alignment = CS.TMPro.TextAlignmentOptions.Right
-	if SONGMAN:IsCmod() then
-		Speed_Num_txt_UGUI.text =
-			"Note Speed\n" ..
-			PLAYERSTATS:GetNoteSpeedOption() ..
-			"\nSpeed\n" ..
-			nowSpeed ..
-			"\nBPM\n" ..
-			nowBPM
-	else
-		Speed_Num_txt_UGUI.text =
-			"Note Speed\n" ..
-			PLAYERSTATS:GetNoteSpeedOption() ..
-			"\nSpeed\n" ..
-			nowSpeed ..
-			"\nBPM\n" ..
-			nowBPM ..
-			"\nbaseBPM/BPM\n" ..
-			nowbaseBPM_Division_BPM ..
-			"\nScroll\n" ..
-			nowScroll
-	end
-end
 
 local function CalculateNowSpeed(songBeat)
 	local speedPositions = SONGMAN:GetSpeedPositions()
@@ -129,34 +95,69 @@ local function CalculateScroll(songBeat)
 	end
 end
 
-function execute.update()
-	local songBeat = GAMESTATE:GetSongBeat()
-	CalculateNowSpeed(songBeat)
-	CalculatenowbaseBPM_Division_BPM(songBeat)
-	if not SONGMAN:IsCmod() then
-		CalculateScroll(songBeat)
+local function F_coroutine()
+	while true do
+		if F_on then
+			local songBeat = GAMESTATE:GetSongBeat()
+			CalculateNowSpeed(songBeat)
+			CalculatenowbaseBPM_Division_BPM(songBeat)
+			if not SONGMAN:IsCmod() then
+				CalculateScroll(songBeat)
+			end
+			if SONGMAN:IsCmod() then
+				Speed_Num_txt_UGUI.text =
+					"Note Speed\n" ..
+					nowSpeed * PLAYERSTATS:GetNoteSpeedOption() ..
+					"\nSpeed\n" ..
+					nowSpeed ..
+					"\nBPM\n" ..
+					nowBPM
+			else
+				Speed_Num_txt_UGUI.text =
+					"Note Speed\n" ..
+					nowSpeed * PLAYERSTATS:GetNoteSpeedOption() * nowbaseBPM_Division_BPM * nowScroll ..
+					"\nSpeed\n" ..
+					nowSpeed ..
+					"\nBPM\n" ..
+					nowBPM ..
+					"\nbaseBPM/BPM\n" ..
+					nowbaseBPM_Division_BPM ..
+					"\nScroll\n" ..
+					nowScroll
+			end
+		end
+		coroutine.yield()
 	end
-	if SONGMAN:IsCmod() then
-		Speed_Num_txt_UGUI.text =
-			"Note Speed\n" ..
-			nowSpeed * PLAYERSTATS:GetNoteSpeedOption() ..
-			"\nSpeed\n" ..
-			nowSpeed ..
-			"\nBPM\n" ..
-			nowBPM
-	else
-		Speed_Num_txt_UGUI.text =
-			"Note Speed\n" ..
-			nowSpeed * PLAYERSTATS:GetNoteSpeedOption() * nowbaseBPM_Division_BPM * nowScroll ..
-			"\nSpeed\n" ..
-			nowSpeed ..
-			"\nBPM\n" ..
-			nowBPM ..
-			"\nbaseBPM/BPM\n" ..
-			nowbaseBPM_Division_BPM ..
-			"\nScroll\n" ..
-			nowScroll
-	end
+end
+
+function execute.onloaded()
+	nowBPM = SONGMAN:GetBaseBpm()
+	local WickyCanvas = util.GetCanvas()
+	local Speed_Num_txt = ACTORFACTORY:CreateUIText()
+	Speed_Num_txt_UGUI = Speed_Num_txt:GetTextMeshProUGUI()
+	Speed_Num_txt.gameObject.name = "Speed_Num_txt"
+	Speed_Num_txt.gameObject.transform:SetParent(WickyCanvas.transform, false)
+	Speed_Num_txt.gameObject:AddComponent(typeof(UnityEngine.CanvasRenderer))
+	Speed_Num_txt.transform.anchorMin = Vector2(0, 0.6)
+	Speed_Num_txt.transform.anchorMax = Vector2(1, 0.6)
+	Speed_Num_txt.transform.localPosition = Vector3(-35, 30, 0)
+	Speed_Num_txt.transform.sizeDelta = Vector2(0, 0)
+	Speed_Num_txt_UGUI.alignment = CS.TMPro.TextAlignmentOptions.Right
+	Speed_Num_txt_UGUI.outlineWidth = 0.2
+	Speed_Num_txt_UGUI.lineSpacing = -20
+	_coroutine = cs_coroutine.start(F_coroutine)
+end
+
+function execute.onPause()
+	F_on = false
+end
+
+function execute.onResume()
+	F_on = true
+end
+
+function execute.ondestroy()
+	cs_coroutine.stop(_coroutine)
 end
 
 return execute

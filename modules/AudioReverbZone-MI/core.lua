@@ -16,6 +16,7 @@ end
 
 function DelayReverb()
     _Audio_Reverb_Zone_obj:SetActive(true)
+    --_Audio_Reverb_Zone_obj:AddComponent(typeof(CS.UnityEngine.AudioReverbZone()))
 end
 
 return execute
