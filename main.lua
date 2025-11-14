@@ -63,9 +63,9 @@ function onloaded()
 	local platform = APPMAN:GetPlatformInt()
 
 	if platform == 3 or platform == 4 then
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/GLWPpMI_3.3.0.3/"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/GLWPpMI_3.3.0.4/"
 	else
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\GLWPpMI_3.3.0.3\\"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\GLWPpMI_3.3.0.4\\"
 	end
 
 	util = require("tools\\utils.lua")
@@ -76,7 +76,12 @@ function onloaded()
 	util.InsertSettings(ini_parser, settingsDir)
 
 	--Set language
-	local lang = settings["Language"].language
+	local lang
+	if settings["Language"].Auto == 1 then
+		lang = PLAYERSTATS:GetCurrentLanguage()
+	else
+		lang = settings["Language"].language
+	end
 	util.SetLanguage(lang)
 
 	loadAllScripts()

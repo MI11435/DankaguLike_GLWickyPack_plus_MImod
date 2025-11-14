@@ -36,23 +36,12 @@ execute.start = function()
     if (APPMAN:IsNotePreview()) then
         return
     end
-    local scoreData = CS.ScoreDataPrefas.instance:FindScore(
-        Path.GetFileName(SONGMAN:GetSongDir()),
-        SONGMAN:GetDifficulty()
-    )
+    local scoreData = PLAYERSTATS:GetHighScore()
 
     if (scoreData == nil) then
         return
     end
 
-    --[[
-    SCREENMAN:SystemMessage(
-        "Score : " .. scoreData.Score .. " | " ..
-        "Combo : " .. scoreData.Combo .. " | " ..
-        "ClearState : " .. scoreData.ClearState .. " | " ..
-        "Rank : " .. scoreData.Rank
-    )
-    ]]
     ClearState = scoreData.ClearState
     High_Score = scoreData.Score
     LifeView2.transform:GetChild(1):GetComponent(typeof(UnityEngine.UI.Slider)).maxValue = theoretical_value - High_Score

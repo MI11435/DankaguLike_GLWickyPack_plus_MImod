@@ -42,7 +42,7 @@ execute.onloaded = function()
 	diffText = ''
 	diffColor = util.ColorRGB(0, 0, 0)
 	local diffType = SONGMAN:GetDifficultyToInt()
-	diffMeter = SONGMAN:GetMeter()
+	diffMeter = SONGMAN:GetMeterName()
 	diffX = false
 	size = execute.GetOption("size")
 
