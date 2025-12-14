@@ -63,9 +63,9 @@ function onloaded()
 	local platform = APPMAN:GetPlatformInt()
 
 	if platform == 3 or platform == 4 then
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/GLWPpMI_3.3.0.4/"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "/DankaguLike_GLWickyPack_plus_MImod/"
 	else
-		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\GLWPpMI_3.3.0.4\\"
+		parentDir = CS.ExternalDirectory.GlobalLuaPath .. "\\DankaguLike_GLWickyPack_plus_MImod\\"
 	end
 
 	util = require("tools\\utils.lua")
