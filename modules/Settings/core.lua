@@ -55,7 +55,11 @@ local function CreateButton(name, pos, size, color, text, sprite, clickListener)
     label.transform:SetParent(btnImg.transform, false)
     buttonText = AddComponent(label, Text)
     buttonText.text = util.GetString(text.text)
-    buttonText.font = util.GetFontJP()
+    if util.GetString("lang") == "zh-CN" then
+      buttonText.font = util.GetFontZH_CN()
+    else
+      buttonText.font = util.GetFontJP()
+    end
     buttonText.fontSize = text.size
     buttonText.alignment = UnityEngine.TextAnchor.MiddleCenter
     buttonText.color = text.color
@@ -147,7 +151,11 @@ execute.onloaded = function()
   title.transform:SetParent(SettingsCanvas.transform, false)
   local titleText = AddComponent(title, Text)
   titleText.text = "WickyPack 3.3.0.5 + MImod - " .. util.GetString("Settings")
-  titleText.font = util.GetFontJP()
+  if util.GetString("lang") == "zh-CN" then
+    titleText.font = util.GetFontZH_CN()
+  else
+    titleText.font = util.GetFontJP()
+  end
   titleText.fontSize = 30
   titleText.alignment = UnityEngine.TextAnchor.MiddleCenter
   titleText.color = Color(1, 1, 1, 1)

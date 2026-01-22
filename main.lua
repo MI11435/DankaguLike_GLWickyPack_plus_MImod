@@ -7,6 +7,7 @@ local Assembly = CS.System.Reflection.Assembly
 
 local parentDir = nil
 local ini_parser = require("tools\\ini_parser.lua")
+local dkjson = require("tools\\dkjson.lua")
 
 local settingsDir = nil
 local settings = nil
@@ -74,6 +75,7 @@ function onloaded()
 
 	util.InsertParentDir(parentDir)
 	util.InsertSettings(ini_parser, settingsDir)
+	File.WriteAllText(parentDir.."settings.json",dkjson.encode(settings))
 
 	--Set language
 	local lang

@@ -21,6 +21,7 @@ local LaneSpriteCanvas = nil
 local width = SCREENMAN:GetScreenWidth()
 local height = SCREENMAN:GetScreenHeight()
 local FontJP = nil
+local FontZH = nil
 local modules = {}
 
 local ini_parser = nil
@@ -120,6 +121,26 @@ util.GetFontJP = function()
 	end
 
 	return FontJP
+end
+
+util.GetFontZH_CN = function()
+	local obj = Resources.FindObjectsOfTypeAll(typeof(Material))
+	local textObj = Resources.FindObjectsOfTypeAll(typeof(Font))
+
+	--Load material
+	for i = 0, obj.Length - 1 do
+		if obj[i].name == "Font Material" then FontMat = obj[i] end
+	end
+
+	--Load font Japanese
+	for i = 0, textObj.Length - 1 do
+		if textObj[i].name == "NotoSansSC-Bold" then
+			FontZH = textObj[i]
+			break
+		end
+	end
+
+	return FontZH
 end
 
 util.GetFontJP_TMP = function()

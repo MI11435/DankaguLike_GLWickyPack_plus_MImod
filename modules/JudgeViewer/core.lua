@@ -12,6 +12,8 @@ local Resources = UnityEngine.Resources
 local execute = {}
 execute.active = true
 
+local CurrentJudge = {CS.Judge.Brilliant,CS.Judge.Great,CS.Judge.Fast,CS.Judge.Slow,CS.Judge.Bad,CS.Judge.Missed}
+
 local Judges = {
 	{
 		name = "Brillant",
@@ -105,16 +107,19 @@ execute.update = function()
 end
 
 execute.onHitNote = function(id, lane, noteType, judgeType, isAttack)
+	local CJ = GAMESTATE:GetCurrentJudge()
+	local CurrentJudge = {CJ.Brilliant,CJ.Great,CJ.Fast,CJ.Slow,CJ.Bad}
 	for _, judge in pairs(Judges) do
 		if judge.type == judgeType then
-			judge.count = judge.count + 1
+			print(CurrentJudge[1])
+			judge.count = CurrentJudge[judge.type + 1 ] --judge.count + 1
 			break
 		end
 	end
 end
 
 execute.onMissedNote = function(id, lane, noteType)
-	Judges[6].count = Judges[6].count + 1
+	Judges[6].count = GAMESTATE:GetCurrentJudge().Missed --Judges[6].count + 1
 end
 
 return execute
