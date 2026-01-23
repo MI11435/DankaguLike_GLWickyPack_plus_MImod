@@ -21,7 +21,7 @@ local function Speed(songBeat)
     for i = 0, speedPositions.Length - 1, 1 do
         if speedPositions[i] <= songBeat and lastBeat_Speed < speedPositions[i] then
             table.insert(Tag_txt_table,
-                "<color=red>Speed</color>,"..speedPositions[i]..","..speedStretchRatios[i]..","..speedDelayBeats[i])
+                "<color=red>Speed</color>:"..speedPositions[i].." | "..speedStretchRatios[i].." | "..speedDelayBeats[i])
         end
     end
     lastBeat_Speed = songBeat
@@ -34,7 +34,7 @@ local function BPM(songBeat)
     for i = 0, bpmPositions.Length - 1, 1 do
         if bpmPositions[i] <= songBeat and lastBeat_BPM < bpmPositions[i] then
             table.insert(Tag_txt_table,
-                "<color=blue>BPM</color>,"..bpmPositions[i]..","..bpms[i])
+                "<color=blue>BPM</color>:"..bpmPositions[i].." | "..bpms[i])
         end
     end
     lastBeat_BPM = songBeat
@@ -47,7 +47,7 @@ local function Scroll(songBeat)
     for i = 0, scrollPositions.Length - 1, 1 do
         if scrollPositions[i] <= songBeat and lastBeat_Scroll < scrollPositions[i] then
             table.insert(Tag_txt_table,
-                "<color=green>Scroll</color>,"..scrollPositions[i]..","..scrolls[i])
+                "<color=green>Scroll</color>:"..scrollPositions[i].." | "..scrolls[i])
         end
     end
     lastBeat_Scroll = songBeat
