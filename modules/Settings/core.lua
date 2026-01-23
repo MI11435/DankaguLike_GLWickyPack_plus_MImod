@@ -55,7 +55,7 @@ local function CreateButton(name, pos, size, color, text, sprite, clickListener)
     label.transform:SetParent(btnImg.transform, false)
     buttonText = AddComponent(label, Text)
     buttonText.text = util.GetString(text.text)
-    if util.GetString("lang") == "zh-CN" then
+    if util.GetLanguage() == "zh-CN" then
       buttonText.font = util.GetFont("NotoSansSC-Bold")
     else
       buttonText.font = util.GetFont("NotoSansJP-Bold")
@@ -151,7 +151,7 @@ execute.onloaded = function()
   title.transform:SetParent(SettingsCanvas.transform, false)
   local titleText = AddComponent(title, Text)
   titleText.text = "WickyPack 3.3.0.5 + MImod - " .. util.GetString("Settings")
-  if util.GetString("lang") == "zh-CN" then
+  if util.GetLanguage() == "zh-CN" then
     titleText.font = util.GetFont("NotoSansSC-Bold")
   else
     titleText.font = util.GetFont("NotoSansJP-Bold")
