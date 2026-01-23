@@ -111,7 +111,6 @@ execute.onHitNote = function(id, lane, noteType, judgeType, isAttack)
 	local CurrentJudge = {CJ.Brilliant,CJ.Great,CJ.Fast,CJ.Slow,CJ.Bad}
 	for _, judge in pairs(Judges) do
 		if judge.type == judgeType then
-			print(CurrentJudge[1])
 			judge.count = CurrentJudge[judge.type + 1 ] --judge.count + 1
 			break
 		end

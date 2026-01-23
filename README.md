@@ -35,6 +35,7 @@ MImod
 - RemainingCount(残り数)
 - toSpeed(スピード換算)
 - Expansion(拡張)
+- TagViewer(タグ表示)
 
 [https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod](https://github.com/MI11435/DankaguLike_GLWickyPack_plus_MImod)
 

@@ -150,7 +150,7 @@ execute.onloaded = function()
   local title = GameObject("Title")
   title.transform:SetParent(SettingsCanvas.transform, false)
   local titleText = AddComponent(title, Text)
-  titleText.text = "WickyPack 3.3.0.5 + MImod - " .. util.GetString("Settings")
+  titleText.text = "WickyPack 3.3.0.6 + MImod - " .. util.GetString("Settings")
   if util.GetLanguage() == "zh-CN" then
     titleText.font = util.GetFont("NotoSansSC-Bold")
   else
