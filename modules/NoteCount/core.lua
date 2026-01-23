@@ -11,7 +11,7 @@ local TextSize = 0.75
 
 execute.onloaded = function()
   TextSize = execute.GetOption("size") or 0.75
-  FontJP = util.GetFontJP_TMP()
+  FontJP = util.GetFont_TMP("NikkyouSans-mLKax SDF")
 end
 
 execute.onSpawnNote = function(noteController)

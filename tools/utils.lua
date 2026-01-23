@@ -20,8 +20,6 @@ local WickyCanvas = nil
 local LaneSpriteCanvas = nil
 local width = SCREENMAN:GetScreenWidth()
 local height = SCREENMAN:GetScreenHeight()
-local FontJP = nil
-local FontZH = nil
 local modules = {}
 
 local ini_parser = nil
@@ -103,58 +101,42 @@ util.GetLaneSpriteCanvas = function()
 	return LaneSpriteCanvas
 end
 
-util.GetFontJP = function()
-	local obj = Resources.FindObjectsOfTypeAll(typeof(Material))
+--- @param name string
+util.GetFont = function(name)
+	if type(name) ~= "string" then
+		error("The argument must be a string.")
+	end
+	local font = nil
 	local textObj = Resources.FindObjectsOfTypeAll(typeof(Font))
 
-	--Load material
-	for i = 0, obj.Length - 1 do
-		if obj[i].name == "Font Material" then FontMat = obj[i] end
-	end
-
-	--Load font Japanese
+	--Load font
 	for i = 0, textObj.Length - 1 do
-		if textObj[i].name == "NotoSansJP-Bold" then
-			FontJP = textObj[i]
+		if textObj[i].name == name then
+			font = textObj[i]
 			break
 		end
 	end
 
-	return FontJP
+	return font
 end
 
-util.GetFontZH_CN = function()
-	local obj = Resources.FindObjectsOfTypeAll(typeof(Material))
-	local textObj = Resources.FindObjectsOfTypeAll(typeof(Font))
-
-	--Load material
-	for i = 0, obj.Length - 1 do
-		if obj[i].name == "Font Material" then FontMat = obj[i] end
+--- @param name string
+util.GetFont_TMP = function(name)
+	if type(name) ~= "string" then
+		error("The argument must be a string.")
 	end
-
-	--Load font Japanese
-	for i = 0, textObj.Length - 1 do
-		if textObj[i].name == "NotoSansSC-Bold" then
-			FontZH = textObj[i]
-			break
-		end
-	end
-
-	return FontZH
-end
-
-util.GetFontJP_TMP = function()
+	local font = nil
 	local textObj = Resources.FindObjectsOfTypeAll(typeof(Font_TMP))
 
-	--Load font Japanese
+	--Load font Asset
 	for i = 0, textObj.Length - 1 do
-		if textObj[i].name == "NikkyouSans-mLKax SDF" then
-			FontJP = textObj[i]
+		if textObj[i].name == name then
+			font = textObj[i]
 			break
 		end
 	end
 
-	return FontJP
+	return font
 end
 
 util.InsertParentDir = function(dir)
@@ -273,6 +255,21 @@ end
 
 util.bump = function()
 	SCREENMAN:SystemMessage("Bump!")
+end
+
+--- @return string
+util.GetTerminalLanguage = function ()
+	local Language = CS.UnityEngine.SystemLanguage
+	local TerminalLanguage = CS.UnityEngine.Application.systemLanguage
+	if TerminalLanguage == Language.Japanese then
+		return "ja"
+	elseif TerminalLanguage == Language.English then
+		return "en"
+	elseif TerminalLanguage == Language.ChineseSimplified then
+		return "zh-CN"
+	else
+		return "en"
+	end
 end
 
 return util

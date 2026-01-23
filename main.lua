@@ -80,7 +80,7 @@ function onloaded()
 	--Set language
 	local lang
 	if settings["Language"].Auto == 1 then
-		lang = PLAYERSTATS:GetCurrentLanguage()
+		lang = util.GetTerminalLanguage()
 	else
 		lang = settings["Language"].language
 	end

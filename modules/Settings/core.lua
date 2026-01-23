@@ -56,9 +56,9 @@ local function CreateButton(name, pos, size, color, text, sprite, clickListener)
     buttonText = AddComponent(label, Text)
     buttonText.text = util.GetString(text.text)
     if util.GetString("lang") == "zh-CN" then
-      buttonText.font = util.GetFontZH_CN()
+      buttonText.font = util.GetFont("NotoSansSC-Bold")
     else
-      buttonText.font = util.GetFontJP()
+      buttonText.font = util.GetFont("NotoSansJP-Bold")
     end
     buttonText.fontSize = text.size
     buttonText.alignment = UnityEngine.TextAnchor.MiddleCenter
@@ -152,9 +152,9 @@ execute.onloaded = function()
   local titleText = AddComponent(title, Text)
   titleText.text = "WickyPack 3.3.0.5 + MImod - " .. util.GetString("Settings")
   if util.GetString("lang") == "zh-CN" then
-    titleText.font = util.GetFontZH_CN()
+    titleText.font = util.GetFont("NotoSansSC-Bold")
   else
-    titleText.font = util.GetFontJP()
+    titleText.font = util.GetFont("NotoSansJP-Bold")
   end
   titleText.fontSize = 30
   titleText.alignment = UnityEngine.TextAnchor.MiddleCenter
