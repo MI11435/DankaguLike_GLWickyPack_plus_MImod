@@ -9,7 +9,7 @@ local Vector3 = UnityEngine.Vector3
 
 local F_on = true
 local Tag_txt_UGUI
-local Tag_txt_table = {}
+local Tag_txt_table
 
 local lastBeat_Speed ,lastBeat_BPM ,lastBeat_Scroll = -math.huge ,-math.huge ,-math.huge
 
@@ -60,7 +60,7 @@ local function F_coroutine()
 			Speed(songBeat)
 			BPM(songBeat)
 		    Scroll(songBeat)
-            Tag_txt_UGUI.text = table.concat(Tag_txt_table,"<br>")
+            Tag_txt_UGUI.text = table.concat(Tag_txt_table," , ", #Tag_txt_table - 4 ,#Tag_txt_table)
 		end
 		coroutine.yield()
 	end
@@ -78,9 +78,11 @@ function execute.onloaded()
 	Tag_txt.transform.anchorMax = Vector2(1, 0.8)
 	Tag_txt.transform.localPosition = Vector3(-35, 30, 0)
 	Tag_txt.transform.sizeDelta = Vector2(0, 0)
+	Tag_txt.transform.anchorMin = Vector2(-100, 0)
 	Tag_txt_UGUI.alignment = CS.TMPro.TextAlignmentOptions.BottomRight
 	Tag_txt_UGUI.outlineWidth = 0.2
 	Tag_txt_UGUI.lineSpacing = -20
+	Tag_txt_table = {"","","","",""}
     _coroutine = cs_coroutine.start(F_coroutine)
 end
 
